@@ -1,5 +1,7 @@
-# This script will READ registry locations from a CSV file ($origCSV), check their values, and create a new CSV ($resultsCSV) with the current values in a new column.
-# The original CSV is not modified.
+# Process:
+#  1. READ registry locations from a CSV file ($origCSV)
+#  2. Grab their values
+#  3. Write current values into a new column in a new file ($resultsCSV)
 
 # DO THIS:
 #  -Modify the variable $origCSV, with your CSV file location.
