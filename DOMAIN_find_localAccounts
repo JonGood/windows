@@ -1,0 +1,8 @@
+# Search through domain joined systems in Active Directory and look for local accounts.
+
+$Computers = Get-ADComputer -Filter * -Property * | select Name
+
+$Computers | foreach {
+  $computerName = $_.Name
+  Get-wmiobject -query "Select * from Win32_UserAccount where localaccount = 'True'" -computername $computerName | select-object PSComputerName, Name, Disabled, Description
+} | Export-CSV -Path .\results\LocalAccounts_$((Get-Date).ToString("yyyy-MM-dd_HH-mm-ss")).csv -NoTypeInformation
